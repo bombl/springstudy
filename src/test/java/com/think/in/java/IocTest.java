@@ -30,14 +30,22 @@ public class IocTest {
         properties.setProperty("aaaa", "bbbb");
         properties.setProperty("bbbb", "src/main/resources/bean.xml");
         ApplicationContext context = new FileSystemXmlApplicationContext("${${aaaa}}");
-        context.getBean("helloWorld",HelloWorld.class).sayHello();
+        context.getBean("helloWorld", HelloWorld.class).sayHello();
     }
+
     @Test
     public void testBeanFactory() {
         BeanFactory beanFactory =
                 new XmlBeanFactory(new FileSystemResource("src/main/resources/bean.xml"));
         HelloWorld helloWorld = beanFactory.getBean("helloWorld", HelloWorld.class);
         helloWorld.sayHello();
+    }
+
+    @Test
+    public void testMyApplicationContext() {
+        Properties properties = System.getProperties();
+        properties.setProperty("aaa", "bbb");
+        ApplicationContext applicationContext = new MyApplicationContext();
     }
 
 }
