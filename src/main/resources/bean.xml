@@ -7,8 +7,34 @@
 	  http://www.springframework.org/schema/context
       http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.think.in.java"/>
+    <!--全局延时加载-->
+    <!--<beans default-lazy-init="true"></beans>-->
 
-    <bean id="helloWorld" class="com.think.in.java.HelloWorld"/>
+    <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld"/>-->
 
+    <!--profile-->
+    <!--<beans profile="dev">-->
+        <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld"/>-->
+    <!--</beans>-->
+
+    <!--import-->
+    <!--<import resource="bean2.xml"/>-->
+
+    <!--循环指向-->
+    <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld"/>-->
+    <!--<alias name="helloWorld" alias="helloWorld2"/>-->
+    <!--<alias name="helloWorld2" alias="helloWorld"/>-->
+
+    <!--alias-->
+    <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld"/>-->
+    <!--<alias name="helloWorld" alias="helloWorld2"/>-->
+
+    <!--<bean id="helloWorld" name="hello,hello2;hello3" class="com.think.in.java.HelloWorld"/>-->
+
+    <bean id="parentBean" class="com.think.in.java.HelloWorld">
+        <property name="name" value="parent"/>
+    </bean>
+    <bean id="helloWorld" class="com.think.in.java.HelloWorld" scope="prototype" parent="parentBean">
+        <property name="name" value="override"/>
+    </bean>
 </beans>
