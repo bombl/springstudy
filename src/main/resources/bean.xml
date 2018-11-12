@@ -11,4 +11,6 @@
 
     <bean id="helloWorld" class="com.think.in.java.HelloWorld"/>
 
+    <bean id="myBeanPostProcessor" class="com.think.in.java.MyBeanPostProcessor"/>
+
 </beans>

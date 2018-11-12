@@ -48,4 +48,11 @@ public class IocTest {
         ApplicationContext applicationContext = new MyApplicationContext();
     }
 
+    @Test
+    public void testMyBeanPostProcessor() {
+        ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/bean.xml");
+        MyBeanPostProcessor myBeanPostProcessor = context.getBean("myBeanPostProcessor", MyBeanPostProcessor.class);
+        System.out.println(myBeanPostProcessor);
+    }
+
 }
