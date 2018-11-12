@@ -7,10 +7,58 @@
 	  http://www.springframework.org/schema/context
       http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.think.in.java"/>
+    <!--全局延时加载-->
+    <!--<beans default-lazy-init="true"></beans>-->
 
+    <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld"/>-->
+
+    <!--profile-->
+    <!--<beans profile="dev">-->
+        <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld"/>-->
+    <!--</beans>-->
+
+    <!--import-->
+    <!--<import resource="bean2.xml"/>-->
+
+    <!--循环指向-->
+    <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld"/>-->
+    <!--<alias name="helloWorld" alias="helloWorld2"/>-->
+    <!--<alias name="helloWorld2" alias="helloWorld"/>-->
+
+    <!--alias-->
+    <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld"/>-->
+    <!--<alias name="helloWorld" alias="helloWorld2"/>-->
+
+
+    <!--<bean id="helloWorld" name="hello,hello2;hello3" class="com.think.in.java.HelloWorld"/>-->
+
+    <!--parent-->
+    <!--<bean id="parentBean" class="com.think.in.java.HelloWorld">-->
+        <!--<property name="name" value="parent"/>-->
+    <!--</bean>-->
+    <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld" scope="prototype" parent="parentBean">-->
+        <!--<property name="name" value="override"/>-->
+    <!--</bean>-->
+
+    <!--meta-->
+    <!--<bean id="helloWorld" name="hello,hello2;hello3" class="com.think.in.java.HelloWorld">-->
+        <!--<meta key="aaa" value="bbb"/>-->
+    <!--</bean>-->
+
+    <!--lookup-method-->
+    <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld" scope="prototype"/>-->
+    <!--<bean id="helloWorld2" class="com.think.in.java.HelloWorld2">-->
+        <!--&lt;!&ndash;第一种&ndash;&gt;-->
+        <!--<property name="helloWorld" ref="helloWorld"/>-->
+        <!--&lt;!&ndash;第二种&ndash;&gt;-->
+        <!--&lt;!&ndash;<lookup-method name="getHelloWorld" bean="helloWorld"/>&ndash;&gt;-->
+    <!--</bean>-->
+
+    <!--replace-method-->
     <bean id="helloWorld" class="com.think.in.java.HelloWorld"/>
+    <bean id="helloWorld2" class="com.think.in.java.HelloWorld2">
+        <replaced-method name="getHelloWorld" replacer="helloWorld"></replaced-method>
+    </bean>
 
     <bean id="myBeanPostProcessor" class="com.think.in.java.MyBeanPostProcessor"/>
-
 </beans>

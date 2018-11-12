@@ -3,15 +3,22 @@ package com.think.in.java;/**
  * @Date: 2018/9/22
  */
 
+import com.sun.jndi.toolkit.url.Uri;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 /**
@@ -19,18 +26,19 @@ import java.util.Properties;
  * User:wangs
  * Date:2018/9/22
  */
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({"classpath:bean.xml"})
 public class IocTest {
 
-    @Autowired
     @Resource
+    private HelloWorld2 helloWorld2;
 
     @Test
     public void testApplicationContext() {
-        Properties properties = System.getProperties();
-        properties.setProperty("aaaa", "bbbb");
-        properties.setProperty("bbbb", "src/main/resources/bean.xml");
-        ApplicationContext context = new FileSystemXmlApplicationContext("${${aaaa}}");
-        context.getBean("helloWorld", HelloWorld.class).sayHello();
+        ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/bean.xml");
+        System.out.println(context.getBean("helloWorld", HelloWorld.class).getName());
     }
 
     @Test
@@ -46,6 +54,31 @@ public class IocTest {
         Properties properties = System.getProperties();
         properties.setProperty("aaa", "bbb");
         ApplicationContext applicationContext = new MyApplicationContext();
+    }
+
+
+    public void testIsAbsolute() throws Exception {
+        URI uri = new URI("http://myUrl/%2E%2E/%2E%2E");
+        URI uri2 = new URI("ftp://myUrl/%2E%2E/%2E%2E");
+        System.out.println(uri2.isAbsolute());
+    }
+
+    @Test
+    public void testProfile() {
+        Properties properties = System.getProperties();
+        properties.setProperty("spring.profiles.active","dev");
+        ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/bean.xml");
+        context.getBean("helloWorld", HelloWorld.class).sayHello();
+    }
+
+    @Test
+    public void testLookupMethod() {
+        System.out.println(helloWorld2.getHelloWorld() == helloWorld2.getHelloWorld());
+    }
+
+    @Test
+    public void testReplaceMethod() {
+        System.out.println(helloWorld2.getHelloWorld());
     }
 
     @Test
