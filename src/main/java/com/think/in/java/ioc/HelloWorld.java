@@ -1,4 +1,4 @@
-package com.think.in.java;/**
+package com.think.in.java.ioc;/**
  * @Author: wangs
  * @Date: 2018/9/22
  */
