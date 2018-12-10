@@ -55,10 +55,12 @@
     <!--</bean>-->
 
     <!--replace-method-->
-    <bean id="helloWorld" class="com.think.in.java.HelloWorld"/>
-    <bean id="helloWorld2" class="com.think.in.java.HelloWorld2">
-        <replaced-method name="getHelloWorld" replacer="helloWorld"></replaced-method>
-    </bean>
+    <!--<bean id="helloWorld" class="com.think.in.java.HelloWorld"/>-->
+    <!--<bean id="helloWorld2" class="com.think.in.java.HelloWorld2">-->
+        <!--<replaced-method name="getHelloWorld" replacer="helloWorld"></replaced-method>-->
+    <!--</bean>-->
 
-    <bean id="myBeanPostProcessor" class="com.think.in.java.MyBeanPostProcessor"/>
+    <!--<bean id="myBeanPostProcessor" class="com.think.in.java.MyBeanPostProcessor"/>-->
+
+    <bean id="testA" class="com.think.in.java.circul.TestA"/>
 </beans>

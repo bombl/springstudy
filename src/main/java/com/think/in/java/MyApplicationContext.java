@@ -16,4 +16,9 @@ public class MyApplicationContext extends AbstractXmlApplicationContext {
         refresh();
     }
 
+    @Override
+    protected void initPropertySources() {
+        System.out.println("aa");
+        super.initPropertySources();
+    }
 }

@@ -4,6 +4,7 @@ package com.think.in.java;/**
  */
 
 import com.sun.jndi.toolkit.url.Uri;
+import com.think.in.java.circul.TestA;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanFactory;
@@ -14,6 +15,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.net.MalformedURLException;
@@ -30,6 +32,7 @@ import java.util.Properties;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:bean.xml"})
+@Transactional
 public class IocTest {
 
     @Resource
@@ -86,6 +89,13 @@ public class IocTest {
         ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/bean.xml");
         MyBeanPostProcessor myBeanPostProcessor = context.getBean("myBeanPostProcessor", MyBeanPostProcessor.class);
         System.out.println(myBeanPostProcessor);
+    }
+
+    @Test
+    public void testCircul() {
+        ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/bean.xml");
+        TestA testA = context.getBean("testA", TestA.class);
+        System.out.println(testA);
     }
 
 }
