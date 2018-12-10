@@ -4,7 +4,7 @@
  * 编译器:           	JDK1.8
  */
 
-package com.think.in.java;
+package com.think.in.java.ioc;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

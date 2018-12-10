@@ -4,7 +4,7 @@
  * 编译器:           	JDK1.8
  */
 
-package com.think.in.java.circul;
+package com.think.in.java.ioc.circul;
 
 /**
  * TODO: 文件注释

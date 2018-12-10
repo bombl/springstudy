@@ -3,24 +3,23 @@ package com.think.in.java;/**
  * @Date: 2018/9/22
  */
 
-import com.sun.jndi.toolkit.url.Uri;
-import com.think.in.java.circul.TestA;
+import com.think.in.java.ioc.HelloWorld;
+import com.think.in.java.ioc.HelloWorld2;
+import com.think.in.java.ioc.MyApplicationContext;
+import com.think.in.java.ioc.MyBeanPostProcessor;
+import com.think.in.java.ioc.circul.TestA;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Properties;
 
 /**
@@ -32,7 +31,6 @@ import java.util.Properties;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:bean.xml"})
-@Transactional
 public class IocTest {
 
     @Resource

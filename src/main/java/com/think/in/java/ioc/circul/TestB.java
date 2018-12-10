@@ -4,7 +4,7 @@
  * 编译器:           	JDK1.8
  */
 
-package com.think.in.java.circul;
+package com.think.in.java.ioc.circul;
 
 /**
  * TODO: 文件注释
@@ -15,15 +15,15 @@ package com.think.in.java.circul;
  * <p>
  * Date	      2018/11/20 9:36
  */
-public class TestA {
+public class TestB {
 
-    private TestB testB;
+    private TestC testC;
 
-    public TestB getTestB() {
-        return testB;
+    public TestC getTestC() {
+        return testC;
     }
 
-    public void setTestB(TestB testB) {
-        this.testB = testB;
+    public void setTestC(TestC testC) {
+        this.testC = testC;
     }
 }
