@@ -7,7 +7,6 @@ import com.think.in.java.ioc.HelloWorld;
 import com.think.in.java.ioc.HelloWorld2;
 import com.think.in.java.ioc.MyApplicationContext;
 import com.think.in.java.ioc.MyBeanPostProcessor;
-import com.think.in.java.ioc.circul.TestA;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanFactory;
@@ -87,13 +86,6 @@ public class IocTest {
         ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/bean.xml");
         MyBeanPostProcessor myBeanPostProcessor = context.getBean("myBeanPostProcessor", MyBeanPostProcessor.class);
         System.out.println(myBeanPostProcessor);
-    }
-
-    @Test
-    public void testCircul() {
-        ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/bean.xml");
-        TestA testA = context.getBean("testA", TestA.class);
-        System.out.println(testA);
     }
 
 }

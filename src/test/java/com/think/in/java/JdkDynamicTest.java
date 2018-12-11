@@ -5,10 +5,16 @@ import com.think.in.java.aop.dynamic.HelloImpl;
 import com.think.in.java.aop.dynamic.IHello;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.lang.reflect.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({"classpath:config.xml"})
 public class JdkDynamicTest {
 
     @Test
@@ -16,7 +22,7 @@ public class JdkDynamicTest {
         //生成$Proxy0的class文件
         System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         //获取动态代理类
-        Class proxyClazz = Proxy.getProxyClass(IHello.class.getClassLoader(),IHello.class);
+        Class proxyClazz = Proxy.getProxyClass(IHello.class.getClassLoader(), IHello.class);
         //获得代理类的构造函数，并传入参数类型InvocationHandler.class
         Constructor constructor = proxyClazz.getConstructor(InvocationHandler.class);
         //通过构造函数来创建动态代理对象，将自定义的InvocationHandler实例传入
@@ -29,10 +35,17 @@ public class JdkDynamicTest {
     public void testJdkDynamicProxy2() {
         //生成$Proxy0的class文件
         System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
-        IHello  ihello = (IHello) Proxy.newProxyInstance(IHello.class.getClassLoader(),  //加载接口的类加载器
+        IHello ihello = (IHello) Proxy.newProxyInstance(IHello.class.getClassLoader(),  //加载接口的类加载器
                 new Class[]{IHello.class},      //一组接口
                 new MyInvocationHandler(new HelloImpl())); //自定义的InvocationHandler
         ihello.sayHello();
+    }
+
+    @Test
+    public void test() throws FileNotFoundException {
+        FileOutputStream file = new FileOutputStream("$Proxy0" + ".class");
+
+        System.out.println(new File("$Proxy0" + ".class").getAbsolutePath());
 
     }
 }
