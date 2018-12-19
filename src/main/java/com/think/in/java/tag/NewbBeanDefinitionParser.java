@@ -8,6 +8,7 @@ package com.think.in.java.tag;
 
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
+import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
 /**
@@ -22,11 +23,14 @@ import org.w3c.dom.Element;
 public class NewbBeanDefinitionParser extends AbstractSingleBeanDefinitionParser  {
     @Override
     protected Class<?> getBeanClass(Element element) {
-        return super.getBeanClass(element);
+        return Newb.class;
     }
 
     @Override
     protected void doParse(Element element, BeanDefinitionBuilder builder) {
+        builder.addPropertyValue("id", Integer.parseInt(element.getAttribute("id")));
+        builder.addPropertyValue("name", element.getAttribute("name"));
+        builder.addPropertyValue("age", Integer.parseInt(element.getAttribute("age")));
         super.doParse(element, builder);
     }
 }

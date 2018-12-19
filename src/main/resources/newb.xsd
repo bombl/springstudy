@@ -4,29 +4,33 @@
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://www.thinkinio.cn/schema/newb"
             elementFormDefault="qualified">
-    <xsd:element name="bean">
-        <xsd:complexType>
-            <xsd:attribute name="id" type="xsd:string">
-                <xsd:annotation>
-                    <xsd:documentation>
-                        <![CDATA[ The unique identifier for a bean. ]]>
-                    </xsd:documentation>
-                </xsd:annotation>
-            </xsd:attribute>
-            <xsd:attribute name="name" type="xsd:string">
-                <xsd:annotation>
-                    <xsd:documentation>
-                        <![CDATA[ The name for a bean. ]]>
-                    </xsd:documentation>
-                </xsd:annotation>
-            </xsd:attribute>
-            <xsd:attribute name="age" type="xsd:int">
-                <xsd:annotation>
-                    <xsd:documentation>
-                        <![CDATA[ The age of the bean. ]]>
-                    </xsd:documentation>
-                </xsd:annotation>
-            </xsd:attribute>
-        </xsd:complexType>
+    <xsd:complexType name="bean">
+        <xsd:attribute name="id" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation>
+                    <![CDATA[ The unique identifier for a bean. ]]>
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="name" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation>
+                    <![CDATA[ The name for a bean. ]]>
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="age" type="xsd:int">
+            <xsd:annotation>
+                <xsd:documentation>
+                    <![CDATA[ The age of the bean. ]]>
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:element name="bean" type="bean">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[ The service config ]]></xsd:documentation>
+        </xsd:annotation>
     </xsd:element>
 </xsd:schema>
