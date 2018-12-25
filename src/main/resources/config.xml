@@ -12,5 +12,24 @@
 
     <context:component-scan base-package="com.think.in.java.aop"/>
 
-    <aop:aspectj-autoproxy/>
+    <aop:aspectj-autoproxy>
+        <aop:include name="annotationTest"/>
+        <!--<aop:include name="annotationTest2"/>-->
+    </aop:aspectj-autoproxy>
+
+    <!--&lt;!&ndash; 目标对象 &ndash;&gt;-->
+    <!--<bean id="knight" class="com.think.in.java.aop.annotation.BraveKnight"/>-->
+    <!--&lt;!&ndash; 切面bean &ndash;&gt;-->
+    <!--<bean id="mistrel" class="com.think.in.java.aop.annotation.Minstrel"/>-->
+    <!--&lt;!&ndash; 面向切面编程 &ndash;&gt;-->
+    <!--<aop:config>-->
+        <!--<aop:aspect ref="mistrel">-->
+            <!--&lt;!&ndash; 定义切点 &ndash;&gt;-->
+            <!--<aop:pointcut expression="execution(* *.saying(..))" id="embark"/>-->
+            <!--&lt;!&ndash; 声明前置通知 (在切点方法被执行前调用)&ndash;&gt;-->
+            <!--<aop:before method="beforSay" pointcut-ref="embark"/>-->
+            <!--&lt;!&ndash; 声明后置通知 (在切点方法被执行后调用)&ndash;&gt;-->
+            <!--<aop:after method="afterSay" pointcut-ref="embark"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
 </beans>
